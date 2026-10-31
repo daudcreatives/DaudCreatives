@@ -1,4 +1,4 @@
-# Daud Creatives (v7)
+# Daud Creatives (v9)
 Static site: open index.html, or deploy the folder to Cloudflare Pages via GitHub.
 - Contact, social links, photos, portfolio: edit the top of script.js (CONFIG, IMG, PRINT, DIGI, ACC, PROJECTS, POLICY).
 - Keep the card count in each list a multiple of 4 (4, 8 or 12) so rows stay full.
@@ -9,3 +9,6 @@ Static site: open index.html, or deploy the folder to Cloudflare Pages via GitHu
 
 ## Lightbox
 Click any card or hero image to enlarge. Galleries are set in the GAL and KG maps at the bottom of script.js. Add a full-size file per card by adding data-full if needed. Social links (Instagram, Facebook, YouTube) are in CONFIG.social.
+
+## Layout notes
+Printing, Digital and Workflow sections are scroll-snap carousels up to 1024px wide (swipe or use the arrow buttons) and 4-column grids above that. Gear, Projects and Payment use 2 columns on mobile.

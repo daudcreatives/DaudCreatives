@@ -6,14 +6,34 @@ const PRINT=[["Visiting Cards","Premium business cards","card"],["Bill Books","C
 const DIGI=[["Social Media Handling","Content planning, posting and page care","social"],["WordPress Websites","Fast, responsive business websites","web"],["Shopify Stores","Online stores ready to sell","shop"],["WooCommerce Stores","Flexible stores on WordPress","woo"],["POS Software","Point-of-sale system for billing and sales","pos"],["UI/UX Website Design","Clean layouts people enjoy using","app"],["Professional Logo Design","All types of professional logos available","brand"],["Video Editing","Promos, reels and short videos","video"],["Voice-over","Clear voice for your videos and ads","mic"],["Content Creation","Creative content for your brand","content"],["SEO","On-page and technical foundations","seo"],["Social Ads & Marketing Creatives","Campaign visuals and ad creatives","ads"]];
 const ACC=[["Gaming Chairs","Comfortable chairs for your setup","chair"],["Gaming Tables","Desks for gaming and work","table"],["LCDs & Monitors","Screens for work and play","lcd"],["Mouse, Keyboards & Webcams","Everyday computer accessories","periph"]];
 const PROJECTS=[
-{title:"Business Website",cat:"Websites & E-Commerce",kind:"web",desc:"A clean, conversion-focused business site layout."},
-{title:"Online Store",cat:"Websites & E-Commerce",kind:"shop",desc:"A store layout built for easy browsing and checkout."},
-{title:"POS Dashboard",cat:"Websites & E-Commerce",kind:"pos",desc:"A billing and sales screen concept for shops."},
-{title:"App Interface",cat:"UI/UX Design",kind:"app",desc:"A responsive interface study from mobile to desktop."},
-{title:"Brand Identity",cat:"Graphic Design",kind:"brand",desc:"Color system, type and building blocks of a brand."},
-{title:"Social Campaign",cat:"Social Media",kind:"social",desc:"A visual content grid built for consistent publishing."},
-{title:"Short-Form Video",cat:"Video Editing",kind:"video",desc:"Promo edit concept built around pacing and captions."},
-{title:"Packaging Box",cat:"Printing",kind:"box",desc:"A custom packaging box concept."}];
+  // Websites & E-Commerce
+  {title:"Business Website",cat:"Websites & E-Commerce",kind:"web",desc:"A clean, conversion-focused business site layout."},
+  {title:"Online Store",cat:"Websites & E-Commerce",kind:"shop",desc:"A store layout built for easy browsing and checkout."},
+  {title:"POS Dashboard",cat:"Websites & E-Commerce",kind:"pos",desc:"A billing and sales screen concept for shops."},
+
+  // UI/UX Design
+  {title:"App Interface",cat:"UI/UX Design",kind:"app",desc:"A responsive interface study from mobile to desktop."},
+
+  // Graphic Design
+  {title:"Brand Identity",cat:"Graphic Design",kind:"brand",desc:"Color system, type and building blocks of a brand."},
+
+  // Social Media
+  {title:"Social Campaign",cat:"Social Media",kind:"social",desc:"A visual content grid built for consistent publishing."},
+  {title:"Voice-over",cat:"Social Media",kind:"mic",desc:"Professional voice-over for videos, reels and advertisements."},
+  {title:"Content Creation",cat:"Social Media",kind:"content",desc:"Creative content developed for social media platforms."},
+  {title:"Social Ads & Marketing Creatives",cat:"Social Media",kind:"ads",desc:"Creative advertising visuals and marketing campaigns."},
+
+  // Video Editing
+  {title:"Short-Form Video",cat:"Video Editing",kind:"video",desc:"Promo edit concept built around pacing and captions."},
+
+  // Printing
+  {title:"Packaging Box",cat:"Printing",kind:"box",desc:"A custom packaging box concept."},
+  {title:"Flex Printing",cat:"Printing",kind:"flex",desc:"Custom flex banners and promotional printing."},
+  {title:"Visiting Cards",cat:"Printing",kind:"card",desc:"Premium professional business card designs."},
+  {title:"Flyers",cat:"Printing",kind:"flyer",desc:"Creative promotional flyers and advertising materials."},
+  {title:"Stickers",cat:"Printing",kind:"sticker",desc:"Custom printed stickers and product labels."},
+  {title:"Boards",cat:"Printing",kind:"backlit",desc:"Front-lit, back-lit and 3D advertising boards."}
+];
 const POLICY=[["FULL ADVANCE","Full Attention","Full payment in advance. Your project gets priority scheduling and dedicated attention."],["50% ADVANCE","Half Attention","Work begins after a 50% advance. The remaining 50% is paid before final delivery or production release."],["NO ADVANCE","No Attention","Work is not scheduled or started without an agreed advance payment."],["APPROVAL FIRST","Artwork & Specs","Final printing starts only after artwork, specifications and payment are approved. Special arrangements are mutually agreed."]];
 const STEPS=[["Share requirements","Tell us what you need, your goals and timeline."],["Concept and scope","We agree on direction, deliverables and pricing."],["Design and review","You review concepts and request refinements."],["Approve and deliver","Final files are delivered. Production starts after approval."]];
 /* ===== END EDIT SECTION ===== */
@@ -79,11 +99,12 @@ const art = (k, l) => {
 const gc=(t,d,k,n)=>{const c=E("article","gc glass",`<div class="art">${IMG[t]?`<img src="${IMG[t]}" alt="${t}" loading="lazy" width="800" height="500">`:art(k,t+" concept mockup")}</div><div class="gb"><h3>${t}</h3><p>${d}</p><a class="qb" href="${q(t)}" target="_blank" rel="noopener">Get a Quote</a></div>`);c.dataset.reveal="";c.style.setProperty("--i",n%4);return c};
 PRINT.forEach((x,n)=>$("#pg").append(gc(...x,n)));DIGI.forEach((x,n)=>$("#dg").append(gc(...x,n)));ACC.forEach((x,n)=>$("#ac").append(gc(...x,n)));
 PROJECTS.forEach((p,n)=>{const c=E("article","gc glass",`<div class="art">${p.image?`<img src="${p.image}" alt="${p.title}" loading="lazy" width="800" height="500">`:art(p.kind,p.title+" concept mockup")}</div><div class="gb"><h3>${p.title}</h3><p>${p.desc}</p><span class="tag">${p.client?"Client project":"Concept Project"}</span>${p.live?` <a class="tag" href="${p.live}" target="_blank" rel="noopener">View live</a>`:""}</div>`);c.dataset.cat=p.cat;c.dataset.kind=p.kind;c.dataset.reveal="";c.style.setProperty("--i",n%4);$("#proj").append(c)});
-POLICY.forEach(([k,t,d],n)=>{const c=E("article","glass",`<span class="pk">${k}</span><h3>${t}</h3><p>${d}</p>`);c.dataset.reveal="";c.style.setProperty("--i",n);$("#pl").append(c)});
+const PI=["M5 13l4 4L19 7","M12 3a9 9 0 1 0 0 18V3z","M6 6l12 12M18 6L6 18","M5 4h14v16H5zM9 9h6M9 13h6"];
+POLICY.forEach(([k,t,d],n)=>{const c=E("article","glass",`<span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${PI[n]}"/></svg></span><span class="pk">${k}</span><h3>${t}</h3><p>${d}</p>`);c.dataset.reveal="";c.style.setProperty("--i",n);$("#pl").append(c)});
 STEPS.forEach(([t,d],n)=>{const c=E("article","glass",`<span class="pk">0${n+1}</span><h3>${t}</h3><p style="margin:0;color:var(--mute);font-size:.95rem">${d}</p>`);c.style.padding="1.5rem";c.dataset.reveal="";c.style.setProperty("--i",n);$("#steps").append(c)});
 document.querySelectorAll("[data-art]").forEach(e=>e.innerHTML=art(e.dataset.art,""));
 const cats=["All",...new Set(PROJECTS.map(p=>p.cat))];
-cats.forEach((c,i)=>{const b=E("button","",c);b.type="button";b.setAttribute("aria-pressed",i==0);b.onclick=()=>{document.querySelectorAll("#chips button").forEach(x=>x.setAttribute("aria-pressed",x===b));document.querySelectorAll("#proj .gc").forEach(x=>x.hidden=c!=="All"&&x.dataset.cat!==c)};$("#chips").append(b)});
+cats.forEach((c,i)=>{const b=E("button","",c);b.type="button";b.setAttribute("aria-pressed",i==0);b.onclick=()=>{const pj=$("#proj");pj.classList.remove("flt");void pj.offsetWidth;pj.classList.add("flt");b.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});document.querySelectorAll("#chips button").forEach(x=>x.setAttribute("aria-pressed",x===b));document.querySelectorAll("#proj .gc").forEach(x=>x.hidden=c!=="All"&&x.dataset.cat!==c)};$("#chips").append(b)});
 const PN=new Set(PRINT.map(x=>x[0])),sel=$("#sel");sel.append(new Option("Select a service",""));[...PRINT,...DIGI,...ACC].forEach(x=>sel.append(new Option(x[0],x[0])));sel.append(new Option("Not sure yet","Not sure yet"));
 sel.onchange=()=>$("#pf").hidden=!PN.has(sel.value);
 Object.entries(CONFIG.social).forEach(([n,u])=>{if(u)$("#social").append(E("li","",`<a href="${u}" target="_blank" rel="noopener noreferrer">${n}</a>`))});
@@ -133,3 +154,15 @@ lb.addEventListener("touchend",e=>{const t=e.changedTouches[0],dx=t.clientX-tx,d
 document.addEventListener("click",e=>{const m=e.target.closest&&e.target.closest("img[data-lb]");if(m&&!m.closest(".lb")){e.preventDefault();open(m)}});
 document.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches("img[data-lb]")){e.preventDefault();open(e.target)}});
 })();
+
+/* ===== Carousels (printing, digital, workflow): native scroll-snap + prev/next buttons ===== */
+function makeCar(id,label){const t=$("#"+id);if(!t)return;t.tabIndex=0;t.setAttribute("role","region");t.setAttribute("aria-label",label);
+ const w=E("div","car");t.before(w);w.append(t);
+ const ic=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
+ const ctl=E("div","car-ctl",`<button type="button" class="car-b" data-d="-1" aria-label="Previous: ${label}">${ic("M15 5l-7 7 7 7")}</button><button type="button" class="car-b" data-d="1" aria-label="Next: ${label}">${ic("M9 5l7 7-7 7")}</button>`);w.append(ctl);
+ const [p,n]=ctl.children,rq=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ const upd=()=>{const m=t.scrollWidth-t.clientWidth;p.disabled=t.scrollLeft<=2;n.disabled=t.scrollLeft>=m-2};
+ ctl.addEventListener("click",e=>{const b=e.target.closest(".car-b");if(!b||b.disabled)return;const c=t.firstElementChild,g=parseFloat(getComputedStyle(t).columnGap)||16;t.scrollBy({left:(c.offsetWidth+g)*Math.max(1,Math.floor(t.clientWidth/(c.offsetWidth+g)))*b.dataset.d,behavior:rq?"auto":"smooth"})});
+ t.addEventListener("scroll",upd,{passive:true});addEventListener("resize",upd);upd();
+ [...t.children].forEach(c=>c.classList.add("in"))}
+makeCar("pg","Printing and designing services");makeCar("dg","Digital services");makeCar("steps","Workflow steps");
